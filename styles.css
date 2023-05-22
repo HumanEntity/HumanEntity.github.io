@@ -1,6 +1,23 @@
 
+/* html, body { */
+/*     height: 100%; */
+/* } */
+/**/
+html {
+    display: table;
+    margin: auto;
+}
+/**/
+/* body { */
+/*     display: table-cell; */
+/*     vertical-align: middle; */
+/* } */
+
 body {
+    /* display: table-cell; */
 	background-color: #222222;
+    vertical-align: middle;
+	margin: auto;
 }
 
 h1 {
