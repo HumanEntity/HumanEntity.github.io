@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>HumanEntity</title>
+    <link>https://HumanEntity.github.io/</link>
+    <description>Recent content on HumanEntity</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 25 Dec 2023 00:02:28 +0100</lastBuildDate><atom:link href="https://HumanEntity.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://HumanEntity.github.io/about/</link>
+      <pubDate>Tue, 26 Dec 2023 20:44:13 +0100</pubDate>
+      
+      <guid>https://HumanEntity.github.io/about/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Denote.nvim</title>
+      <link>https://HumanEntity.github.io/post/denote.nvim/</link>
+      <pubDate>Mon, 25 Dec 2023 19:37:03 +0100</pubDate>
+      
+      <guid>https://HumanEntity.github.io/post/denote.nvim/</guid>
+      <description>Note taking for me was very hard for a long time. I thought maybe something like obsidian will help me but I use neovim and didn&amp;rsquo;t really wanted to use something else. So after some thinking I figured I can create neovim plugin for that.
+Overview First concept of tags, next installation and configuration, then basic usage using Denote user command and Finally api usage of denote.nvim. I will use v0.</description>
+      <content:encoded><![CDATA[<p>Note taking for me was very hard for a long time. I thought maybe something like obsidian will help me but I use <code>neovim</code> and didn&rsquo;t really wanted to use something else. So after some thinking I figured I can create <code>neovim</code> plugin for that.</p>
+<h1 id="overview">Overview</h1>
+<p>First concept of tags, next installation and configuration, then basic usage using <code>Denote</code> user command and Finally <code>api</code> usage of <code>denote.nvim</code>. I will use <code>v0.1.0</code> tag in this article. Let us begin.</p>
+<h1 id="concept-of-tags">Concept of Tags</h1>
+<p>Tags allow you to group your ideas together. For example you have a project and have some related notes. You can have a tag designed just for that.</p>
+<h1 id="installation-and-configuration">Installation and configuration</h1>
+<p>Install it with Your package manager of choice. I use <code>lazy.nvim</code> so here is snippet for that:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;HumanEntity/denote.nvim&#34;</span>,
+</span></span><span style="display:flex;"><span>    tag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;v0.1.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Denote&#34;</span>,
+</span></span><span style="display:flex;"><span>    build <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mkdir -p ~/.denote&#34;</span>,
+</span></span><span style="display:flex;"><span>    opts <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div><p>The opt field is our configuration. Here is default one:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	filename <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>		ext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;norg&#34;</span>,
+</span></span><span style="display:flex;"><span>		date_sep <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;_&#34;</span>,
+</span></span><span style="display:flex;"><span>		name_sep <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-&#34;</span>,
+</span></span><span style="display:flex;"><span>		tag_sep <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;=&#34;</span>,
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	vault <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>		dir <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;~/.denote/&#34;</span>,
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div><p>Here is a little breakdown</p>
+<ul>
+<li><code>filename.ext</code> is the extension for notes.</li>
+<li><code>filename.date_sep</code> is separator for date and name.</li>
+<li><code>filename.name_sep</code> is separator for name and tags.</li>
+<li><code>filename.tag_sep</code> is separator for tags.</li>
+<li><code>vault.dir</code> is the directory where notes will be stored.</li>
+</ul>
+<h1 id="usage">Usage</h1>
+<p>The usual way (probably) you gonna interact with <code>denote.nvim</code> is using <code>Denote</code> user command. For now you can create and search for notes but first we need to create some notes.</p>
+<h2 id="note-creation">Note creation</h2>
+<p>To create note use <code>:Denote note</code> and it will prompt you for name and tags. Name is just string and tags a space separated list. Don&rsquo;t want any tags just press enter. It will create file with file name in this format <code>%Y%M%D__name--tag1=tag2</code>. The default format is <a href="https://github.com/nvim-neorg/neorg"><code>norg</code></a>.</p>
+<h2 id="searching-for-note">Searching for note</h2>
+<p>To search for note use <code>:Denote search</code>, it will prompt you for date in <code>%Y %M %D</code> format, name, and tags in <code>first second third</code> format. It will use you will get list of items matching it.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>After my struggle with note taking I have found something that fits my needs. It&rsquo;s easy to use and isn&rsquo;t bloated. Thanks for reading.</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
