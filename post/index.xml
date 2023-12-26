@@ -13,11 +13,11 @@
       <pubDate>Mon, 25 Dec 2023 19:37:03 +0100</pubDate>
       
       <guid>https://HumanEntity.github.io/post/denote.nvim/</guid>
-      <description>Note taking for me was very hard for a long time. I thought maybe something like obsidian will help me but I use neovim and didn&amp;rsquo;t really wanted to use something else. So after some thinking I figured I can create neovim plugin for that.
-Overview First concept of tags, next installation and configuration, then basic usage using Denote user command and Finally api usage of denote.nvim. I will use v0.</description>
-      <content:encoded><![CDATA[<p>Note taking for me was very hard for a long time. I thought maybe something like obsidian will help me but I use <code>neovim</code> and didn&rsquo;t really wanted to use something else. So after some thinking I figured I can create <code>neovim</code> plugin for that.</p>
+      <description>Note taking for me was very hard for a long time. I thought maybe something like obsidian will help me but I use neovim and didn&amp;rsquo;t really wanted to use something else. So after some thinking I figured out I can create neovim plugin for that.
+Overview First I will explain concept of tags, next installation and sample configuration, then basic usage using Denote user command and finally api usage of denote.</description>
+      <content:encoded><![CDATA[<p>Note taking for me was very hard for a long time. I thought maybe something like obsidian will help me but I use <code>neovim</code> and didn&rsquo;t really wanted to use something else. So after some thinking I figured out I can create <code>neovim</code> plugin for that.</p>
 <h1 id="overview">Overview</h1>
-<p>First concept of tags, next installation and configuration, then basic usage using <code>Denote</code> user command and Finally <code>api</code> usage of <code>denote.nvim</code>. I will use <code>v0.1.0</code> tag in this article. Let us begin.</p>
+<p>First I will explain concept of tags, next installation and sample configuration, then basic usage using <code>Denote</code> user command and finally <code>api</code> usage of <code>denote.nvim</code>. I will use <code>v0.1.0</code> tag in this article. Let us begin.</p>
 <h1 id="concept-of-tags">Concept of Tags</h1>
 <p>Tags allow you to group your ideas together. For example you have a project and have some related notes. You can have a tag designed just for that.</p>
 <h1 id="installation-and-configuration">Installation and configuration</h1>
@@ -58,12 +58,40 @@ Overview First concept of tags, next installation and configuration, then basic 
 <li><code>vault.dir</code> is the directory where notes will be stored.</li>
 </ul>
 <h1 id="usage">Usage</h1>
-<p>The usual way (probably) you gonna interact with <code>denote.nvim</code> is using <code>Denote</code> user command. For now you can create and search for notes but first we need to create some notes.</p>
+<p>The usual way (probably) you will interact with <code>denote.nvim</code> is using <code>Denote</code> user command. You can use it to create and search for notes. Lets create some notes.</p>
 <h2 id="note-creation">Note creation</h2>
 <p>To create note use <code>:Denote note</code> and it will prompt you for name and tags. Name is just string and tags a space separated list. Don&rsquo;t want any tags just press enter. It will create file with file name in this format <code>%Y%M%D__name--tag1=tag2</code>. The default format is <a href="https://github.com/nvim-neorg/neorg"><code>norg</code></a>.</p>
-<h2 id="searching-for-note">Searching for note</h2>
+<h2 id="searching-for-notes">Searching for notes</h2>
 <p>To search for note use <code>:Denote search</code>, it will prompt you for date in <code>%Y %M %D</code> format, name, and tags in <code>first second third</code> format. It will use you will get list of items matching it.</p>
-<h1 id="conclusion">Conclusion</h1>
+<h1 id="api-way"><code>api</code> way</h1>
+<p>To use <code>denote</code>&rsquo;s <code>api</code> either require it using</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#66d9ef">local</span> api <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;denote.api&#34;</span>)</span></span></code></pre></div><p>or use <code>denote.api</code></p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span><span style="color:#66d9ef">local</span> api <span style="color:#f92672">=</span> require(<span style="color:#e6db74">&#34;denote&#34;</span>).api</span></span></code></pre></div><p>One thing to note is that you can use the <code>api</code> just like the command just don&rsquo;t pass any argument to function.</p>
+<h2 id="creating-notes">Creating notes</h2>
+<p>To create the note use <code>note</code> function.</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>api.note(name, tags)</span></span></code></pre></div><h2 id="searching-for-notes-1">Searching for notes</h2>
+<p>To search for note use <code>search</code> function.<code>date</code> is table with year, month and day field, <code>name</code> just a string and <code>tags</code> list of tags.</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>api.search(date,name,tags)</span></span></code></pre></div><h1 id="conclusion">Conclusion</h1>
 <p>After my struggle with note taking I have found something that fits my needs. It&rsquo;s easy to use and isn&rsquo;t bloated. Thanks for reading.</p>
 ]]></content:encoded>
     </item>
