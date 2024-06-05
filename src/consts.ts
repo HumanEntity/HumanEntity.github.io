@@ -4,3 +4,4 @@
 export const SITE_TITLE = 'Blog';
 export const SITE_DESCRIPTION = 'Simple Blog';
 export const HOMEPAGE_URL = 'https://HumanEntity.github.io';
+export const KNEI_URL = 'https://knei.pl';
