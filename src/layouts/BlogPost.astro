@@ -7,6 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Body from '../components/Body.astro';
 import Content from '../components/Content.astro';
 import { Image } from 'astro:assets';
+import BlogMasthead from '../components/BlogMasthead.astro';
 
 // type Props = CollectionEntry<'blog'>['data'];
 
@@ -39,21 +40,27 @@ const { content: {
 	<Body>
 		<Header />
 		<main class="pt-[56px]">
+			<BlogMasthead image={heroImage} width={960} height={480} format="jpg">
+				<div class="uppercase text-sm mb-4">{title}</div>
+				<div class="text-4xl font-mplus font-medium">{description}</div>
+			</BlogMasthead>
 			<Content className="pt-6">
 				<div class="mb-8">
-					{heroImage && <img
-						class="border border-slate-300 dark:border-zinc-700 rounded-xl"
-						width={960}
-						height={480}
-						src={heroImage}
-						alt="">}
-					<h1 class="text-3xl my-1 font-mplus">{title}</h1>
-					<div>{description}</div>
+					<!-- {heroImage && <img -->
+					<!-- 	class="border border-slate-300 dark:border-zinc-700 rounded-xl" -->
+					<!-- 	width={960} -->
+					<!-- 	height={480} -->
+					<!-- 	src={heroImage} -->
+					<!-- 	alt="">} -->
+					<!-- <h1 class="text-3xl my-1 font-mplus">{title}</h1> -->
+					<!-- <div>{description}</div> -->
 					<hr class="border-top border-zinc-400 my-4"/>
+
 					<slot/>
 					<span
 						class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500"
 					></span>
+					<hr class="border-top border-zinc-400 my-4"/>
 				</div>
 			</Content>
 		</main>
