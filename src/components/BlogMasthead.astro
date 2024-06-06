@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets"// "@astrojs/image/components";
+
+export interface Props {
+	image: string
+	width: number
+	height: number
+	format: string
+}
+
+const {image, width, height, format} = Astro.props
+---
+
+<section class="relative mb-6 h-96 flex justify-center items-center">
+	<div class="absolute w-full overflow-hidden">
+		<Image
+			class="inset-0 min-w-full min-h-full object-cover opacity-30 h-96"
+			src={image}
+			width={width}
+			height={height}
+			format={format}
+			alt="BlogMasthead"
+			/>
+	</div>
+	<div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
+		<slot/>
+	</div>
+</section>
