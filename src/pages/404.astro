@@ -5,16 +5,8 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Body from '../components/Body.astro';
 import Content from '../components/Content.astro';
-import Knei from '../components/Knei.astro';
 import Masthead from '../components/Masthead.astro';
 import { IoChevronForward } from 'react-icons/io5';
-
-const posts = (await Astro.glob("./posts/*.md")).sort(
-	(a: any, b: any) =>
-		new Date(b.frontmatter.pubDate).valueOf() -
-		new Date(a.frontmatter.pubDate).valueOf()
-)
-
 ---
 
 <!doctype html>
