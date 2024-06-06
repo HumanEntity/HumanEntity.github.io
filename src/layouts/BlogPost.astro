@@ -18,7 +18,7 @@ export interface Props {
     pubDate?: string
     updatedDate?: string
     heroImage?: string
-    tags: string[]
+    tags?: string[]
   }
 }
 
@@ -40,10 +40,10 @@ const { content: {
 	<Body>
 		<Header />
 		<main class="pt-[56px]">
-			<BlogMasthead image={heroImage} width={960} height={480} format="jpg">
+			{heroImage && <BlogMasthead image={heroImage} width={960} height={480} format="jpg">
 				<div class="uppercase text-sm mb-4">{title}</div>
 				<div class="text-4xl font-mplus font-medium">{description}</div>
-			</BlogMasthead>
+			</BlogMasthead>}
 			<Content className="pt-6">
 				<div class="mb-8">
 					<!-- {heroImage && <img -->
