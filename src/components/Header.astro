@@ -1,8 +1,8 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { HOMEPAGE_URL } from '../consts';
+import HeaderLink from './HeaderLink.astro'
+import { HOMEPAGE_URL } from '../consts'
 import { IoLogoGithub } from 'react-icons/io5'
-import ThemeToggle from './ThemeToggleButton';
+import ThemeToggle from './ThemeToggleButton'
 // import FootprintIcon from './icons/footprint'
 ---
 
@@ -11,19 +11,18 @@ import ThemeToggle from './ThemeToggleButton';
     <nav class="flex items-center gap-3 text-base">
       <a href="/" class="group">
         <h2 class="font-semibold tracking-tighter p-2 font-mplus text-lg">
-		  <!-- <FootprintIcon/> -->
-         Human Entity
+          <!-- <FootprintIcon/> -->
+          Human Entity
         </h2>
       </a>
       <div class="items-center gap-6 hidden md:flex">
-        <HeaderLink href="/about">About</HeaderLink>
-        <HeaderLink
-          href="https://github.com/HumanEntity/"
-          target="_blank"><IoLogoGithub />Source</HeaderLink
+        <HeaderLink href="/astro">About</HeaderLink>
+        <HeaderLink href="https://github.com/HumanEntity/" target="_blank"
+          ><IoLogoGithub />Source</HeaderLink
         >
       </div>
       <div class="flex-1"></div>
-	  <ThemeToggle client:visible />
+      <ThemeToggle client:visible />
     </nav>
   </div>
 </header>
