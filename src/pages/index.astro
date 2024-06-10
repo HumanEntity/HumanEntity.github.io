@@ -37,6 +37,8 @@ const projects = await getCollection('projects')
           </p>
         </section>
         <section>
+          <h1 class="text-center text-4xl">Posts</h1>
+          <hr class="border-top border-zinc-400 my-4" />
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {
               posts.map(post => (
@@ -55,6 +57,9 @@ const projects = await getCollection('projects')
               ))
             }
           </ul>
+
+          <h1 class="text-center text-4xl">Projects</h1>
+          <hr class="border-top border-zinc-400 my-4" />
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {
               projects.map(project => (
