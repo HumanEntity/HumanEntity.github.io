@@ -62,7 +62,12 @@ const projects = await getCollection('projects')
                   <a href={project.data.repo}>
                     <section class="relative mb-6 flex justify-center items-center">
                       <IoLogoGithub size={44} />
-                      <h1 class="text-3xl">{project.data.name}</h1>
+                      <div>
+                        <h1 class="text-3xl font-mplus font-medium">
+                          {project.data.name}
+                        </h1>
+                        <h3 class="text-sm">{project.data.description}</h3>
+                      </div>
                     </section>
                   </a>
                 </li>
